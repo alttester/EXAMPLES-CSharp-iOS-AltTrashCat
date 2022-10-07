@@ -12,6 +12,7 @@ run-csharp-ios-tests:
     - xcode
   script:
     - chmod +x ./ios_tests.sh
+    - ./ios_tests.sh
   artifacts:
     when: always
     expire_in: 10 days

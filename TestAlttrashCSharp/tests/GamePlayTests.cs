@@ -1,18 +1,20 @@
-using  alttrashcat_tests_csharp.pages;
+using alttrashcat_tests_csharp.pages;
 using System;
 using System.Threading;
-using Xunit;
+using Altom.AltUnityDriver;
+using NUnit.Framework;
 
 namespace alttrashcat_tests_csharp.tests
 {
-    public class GamePlayTests:IDisposable
+    public class GamePlayTests: BaseTest
     {
         AltUnityDriver altUnityDriver;
         MainMenuPage mainMenuPage;
         GamePlay gamePlayPage;
         PauseOverlayPage pauseOverlayPage;
         GetAnotherChancePage getAnotherChancePage;
-        public GamePlayTests()
+        [SetUp]
+        public void Setup()
         {
 
             altUnityDriver=new AltUnityDriver();
@@ -24,29 +26,29 @@ namespace alttrashcat_tests_csharp.tests
             getAnotherChancePage=new GetAnotherChancePage(altUnityDriver);
 
         }
-        [Fact]
+        [Test]
         public void TestGamePlayDisplayedCorrectly(){
             Assert.True(gamePlayPage.IsDisplayed());
         }
-        [Fact]
+        [Test]
         public void TestGameCanBePausedAndResumed(){
             gamePlayPage.PressPause();
             Assert.True(pauseOverlayPage.IsDisplayed());
             pauseOverlayPage.PressResume();
             Assert.True(gamePlayPage.IsDisplayed());
         }
-        [Fact]
+        [Test]
         public void TestGameCanBePausedAndStopped(){
             gamePlayPage.PressPause();
             pauseOverlayPage.PressMainMenu();
             Assert.True(mainMenuPage.IsDisplayed());
         }
-        [Fact]
+        [Test]
         public void TestAvoidingObstacles(){
             gamePlayPage.AvoidObstacles(10);
             Assert.True(gamePlayPage.GetCurrentLife()>0);
         }
-        [Fact]
+        [Test]
         public void TestPlayerDiesWhenObstacleNotAvoided(){
             float timeout=20;
             while(timeout>0){
@@ -61,6 +63,7 @@ namespace alttrashcat_tests_csharp.tests
             Assert.True(getAnotherChancePage.IsDisplayed());
         }
 
+        [TearDown]
         public void Dispose()
         {
             altUnityDriver.Stop();

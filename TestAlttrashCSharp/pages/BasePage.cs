@@ -1,3 +1,4 @@
+using Altom.AltUnityDriver;
 namespace alttrashcat_tests_csharp.pages
 {
     public class BasePage
