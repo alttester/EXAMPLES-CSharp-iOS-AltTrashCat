@@ -1,30 +1,32 @@
-using  alttrashcat_tests_csharp.pages;
+using Altom.AltDriver;
+using alttrashcat_tests_csharp.pages;
 using System;
 using System.Threading;
-using Xunit;
+using NUnit.Framework;
 namespace alttrashcat_tests_csharp.tests
 {
-    public class MainMenuTests:IDisposable
+    public class MainMenuTests
     {
-        AltUnityDriver altUnityDriver;
+        AltDriver altDriver;
         MainMenuPage mainMenuPage;
+        [SetUp]
+        public void Setup()
+        {
+            altDriver = new AltDriver(port: 13000);
+            mainMenuPage = new MainMenuPage(altDriver);
+            mainMenuPage.LoadScene();
+        }
 
+        [TearDown]
         public void Dispose()
         {
-            altUnityDriver.Stop();
-            Thread.Sleep(1000);
+            altDriver.Stop();
+            Thread.Sleep(100);
         }
-        public MainMenuTests()
+
+        [Test]
+        public void TestMainMenuPageLoadedCorrectly()
         {
-            altUnityDriver = new AltUnityDriver();
-            mainMenuPage = new MainMenuPage(altUnityDriver);
-            mainMenuPage.LoadScene();
-
-        }
-
-            
-        [Fact]
-        public void TestMainMenuPageLoadedCorrectly(){
             Assert.True(mainMenuPage.IsDisplayed());
         }
     }
