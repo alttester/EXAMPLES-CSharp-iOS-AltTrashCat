@@ -8,6 +8,8 @@ https://assetstore.unity.com/packages/essentials/tutorial-projects/endless-runne
 - export `IOS_UDID=<your-device-udid>` then run the script `ios_tests.sh`
 
 ### Running the tests on iOS
+The tests are meant to be run on a MacOS device.
+The app is provided at https://altom.com/app/uploads/AltTester/TrashCat/TrashCat.ipa.zip and needs to be included unzipped under project.
 `./ios_tests.sh`
 
 This script will:
