@@ -1,6 +1,6 @@
 # iOS Build with CSharp Tests
 
-This repository shows a few C# tests that use the page object model and AltUnityTester to test the Unity endless runner sample:
+This repository shows a few C# tests that use the page object model and AltTester Unity SDK to test the Unity endless runner sample:
 https://assetstore.unity.com/packages/essentials/tutorial-projects/endless-runner-sample-game-87901
 
 ### Before running the tests on iOS
@@ -18,4 +18,5 @@ This script will:
 - run the tests
 - stop the app after the test are done
 
-More info about the required setup and how to run these tests can be found here: https://altom.gitlab.io/altunity/altunitytester/pages/tester-with-appium.html#
+Info about the required setup and how to run these tests can be found here:
+https://altom.com/alttester/docs/sdk/pages/alttester-with-appium.html#
