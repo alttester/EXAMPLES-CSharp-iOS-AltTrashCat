@@ -1,14 +1,14 @@
 using alttrashcat_tests_csharp.pages;
 using System;
 using System.Threading;
-using Altom.AltUnityDriver;
+using Altom.AltDriver;
 using NUnit.Framework;
 
 namespace alttrashcat_tests_csharp.tests
 {
     public class StartPageTests: BaseTest
     {
-        private AltUnityDriver altUnityDriver;
+        private AltDriver altDriver;
         private MainMenuPage mainMenuPage;
         private StartPage startPage;
 
@@ -16,10 +16,10 @@ namespace alttrashcat_tests_csharp.tests
        [SetUp]
        public void Setup()
        {
-            altUnityDriver=new AltUnityDriver();
-            startPage=new StartPage(altUnityDriver);
+            altDriver=new AltDriver();
+            startPage=new StartPage(altDriver);
             startPage.Load();
-            mainMenuPage=new MainMenuPage(altUnityDriver);
+            mainMenuPage=new MainMenuPage(altDriver);
 
         }
         [Test]
@@ -35,7 +35,7 @@ namespace alttrashcat_tests_csharp.tests
         [TearDown]
         public void Dispose()
         {
-            altUnityDriver.Stop();
+            altDriver.Stop();
             Thread.Sleep(1000);
         }
     }

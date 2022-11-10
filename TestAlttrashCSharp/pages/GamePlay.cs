@@ -1,4 +1,4 @@
-using Altom.AltUnityDriver;
+using Altom.AltDriver;
 using System;
 using System.Linq;
 
@@ -6,12 +6,12 @@ namespace alttrashcat_tests_csharp.pages
 {
     public class GamePlay : BasePage
     {
-        public GamePlay(AltUnityDriver driver) : base(driver)
+        public GamePlay(AltDriver driver) : base(driver)
         {
         }
 
-        public AltUnityObject PauseButton { get => Driver.WaitForObject(By.NAME, "Game/WholeUI/pauseButton", timeout: 2); }
-        public AltUnityObject Character { get => Driver.WaitForObject(By.NAME, "PlayerPivot"); }
+        public AltObject PauseButton { get => Driver.WaitForObject(By.NAME, "Game/WholeUI/pauseButton", timeout: 2); }
+        public AltObject Character { get => Driver.WaitForObject(By.NAME, "PlayerPivot"); }
 
         public bool IsDisplayed(){
             if(PauseButton!=null && Character!=null){
@@ -47,12 +47,12 @@ namespace alttrashcat_tests_csharp.pages
                 }
                 if (obstacle.name.Contains("ObstacleHighBarrier"))
                 {
-                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x, character.y - 50));
+                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x, character.y - 50));
                 }
                 else
                 if (obstacle.name.Contains("ObstacleLowBarrier") || obstacle.name.Contains("Rat"))
                 {
-                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x, character.y + 50));
+                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x, character.y + 50));
                 }
                 else
                 {
@@ -62,12 +62,12 @@ namespace alttrashcat_tests_csharp.pages
                         {
                             if (allObstacles[1].worldX == -1.5f)
                             {
-                                Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x + 50, character.y));
+                                Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
                                 movedRight = true;
                             }
                             else
                             {
-                                Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x - 50, character.y));
+                                Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
                                 movedLeft = true;
                             }
                         }
@@ -77,12 +77,12 @@ namespace alttrashcat_tests_csharp.pages
                             {
                                 if (obstacle.worldX == -1.5f)
                                 {   
-                                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x + 50, character.y));
+                                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
                                     movedRight = true;
                                 }
                                 else
                                 {
-                                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x - 50, character.y));
+                                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
                                     movedLeft = true;
                                 }
                             }
@@ -92,7 +92,7 @@ namespace alttrashcat_tests_csharp.pages
                     {
                         if (obstacle.worldX == character.worldX)
                         {
-                            Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x + 50, character.y));
+                            Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
                             movedRight = true;
                         }
                     }
@@ -104,12 +104,12 @@ namespace alttrashcat_tests_csharp.pages
                 }
                 if (movedRight)
                 {
-                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x - 50, character.y));
+                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
                     movedRight = false;
                 }
                 if (movedLeft)
                 {
-                    Driver.Swipe(new AltUnityVector2(character.x, character.y), new AltUnityVector2(character.x + 50, character.y));
+                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
                     movedRight = false;
                 }
             }

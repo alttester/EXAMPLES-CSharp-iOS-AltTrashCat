@@ -3,7 +3,7 @@ using alttrashcat_tests_csharp.tests;
 using System;
 using System.IO;
 using System.Threading;
-using Altom.AltUnityDriver;
+using Altom.AltDriver;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
@@ -13,7 +13,7 @@ namespace alttrashcat_tests_csharp.tests
 {
     public class BaseTest
     {
-        AltUnityDriver altUnityDriver;
+        AltDriver altDriver;
 
         private AppiumDriver<IOSElement> _driver;
 
@@ -45,8 +45,8 @@ namespace alttrashcat_tests_csharp.tests
 
         void SetupPortForwarding()
         {
-            AltUnityPortForwarding.KillAllIproxyProcess();
-            AltUnityPortForwarding.ForwardIos();
+            AltPortForwarding.KillAllIproxyProcess();
+            AltPortForwarding.ForwardIos();
             Console.WriteLine("Port forwarded (iOS).");
         }
     }
