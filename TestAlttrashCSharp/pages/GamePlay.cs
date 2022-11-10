@@ -22,14 +22,32 @@ namespace alttrashcat_tests_csharp.pages
         public void PressPause(){
             PauseButton.Tap();
         }
-        public int GetCurrentLife(){
-            return Character.CallComponentMethod<int>("CharacterInputController", "get_currentLife", new object[] { });
+        public int GetCurrentLife()
+        {
+            return Character.GetComponentProperty<int>("CharacterInputController", "currentLife", "Assembly-CSharp");
         }
-        public void AvoidObstacles(int numberOfObstacles)
+        public void Jump(AltObject character)
+            {
+                character.CallComponentMethod<string>("CharacterInputController", "Jump", "Assembly-CSharp", new object[]{});
+            }
+        public void Slide(AltObject character)
+            {
+                character.CallComponentMethod<string>("CharacterInputController", "Slide", "Assembly-CSharp", new object[]{});
+            }        
+        public void MoveRight(AltObject character)
+        { 
+            character.CallComponentMethod<string>("CharacterInputController", "ChangeLane", "Assembly-CSharp", new string[]{"1"});
+        }
+        public void MoveLeft(AltObject character)
+        { 
+            character.CallComponentMethod<string>("CharacterInputController", "ChangeLane", "Assembly-CSharp", new string[]{"-1"});
+        }
+           public void AvoidObstacles(int numberOfObstacles)
         {
             var character = Character;
             bool movedLeft = false;
             bool movedRight = false;
+            character.CallComponentMethod<string>("CharacterInputController", "CheatInvincible",  "Assembly-CSharp", new string[]{"true"});
             for (int i = 0; i < numberOfObstacles; i++)
             {
                 var allObstacles = Driver.FindObjectsWhichContain(By.NAME, "Obstacle");
@@ -47,12 +65,13 @@ namespace alttrashcat_tests_csharp.pages
                 }
                 if (obstacle.name.Contains("ObstacleHighBarrier"))
                 {
-                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x, character.y - 50));
+                    Slide(character);
                 }
                 else
                 if (obstacle.name.Contains("ObstacleLowBarrier") || obstacle.name.Contains("Rat"))
                 {
-                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x, character.y + 50));
+
+                    Jump(character);
                 }
                 else
                 {
@@ -62,12 +81,12 @@ namespace alttrashcat_tests_csharp.pages
                         {
                             if (allObstacles[1].worldX == -1.5f)
                             {
-                                Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
+                                MoveRight(character);
                                 movedRight = true;
                             }
                             else
                             {
-                                Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
+                                MoveLeft(character);
                                 movedLeft = true;
                             }
                         }
@@ -76,13 +95,13 @@ namespace alttrashcat_tests_csharp.pages
                             if (allObstacles[1].worldX == character.worldX)
                             {
                                 if (obstacle.worldX == -1.5f)
-                                {   
-                                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
+                                {
+                                    MoveRight(character);
                                     movedRight = true;
                                 }
                                 else
                                 {
-                                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
+                                    MoveLeft(character);
                                     movedLeft = true;
                                 }
                             }
@@ -92,7 +111,7 @@ namespace alttrashcat_tests_csharp.pages
                     {
                         if (obstacle.worldX == character.worldX)
                         {
-                            Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
+                            MoveRight(character);
                             movedRight = true;
                         }
                     }
@@ -104,15 +123,17 @@ namespace alttrashcat_tests_csharp.pages
                 }
                 if (movedRight)
                 {
-                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x - 50, character.y));
+                    MoveLeft(character);
                     movedRight = false;
                 }
                 if (movedLeft)
                 {
-                    Driver.Swipe(new AltVector2(character.x, character.y), new AltVector2(character.x + 50, character.y));
+                    MoveRight(character);
                     movedRight = false;
                 }
+                
             }
+            character.CallComponentMethod<string>("CharacterInputController", "CheatInvincible",  "Assembly-CSharp", new string[]{"false"});
         }
     }
 }
