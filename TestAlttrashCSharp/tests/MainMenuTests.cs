@@ -1,7 +1,7 @@
 using alttrashcat_tests_csharp.pages;
 using System;
 using System.Threading;
-using Altom.AltDriver;
+using AltTester.AltDriver;
 using NUnit.Framework;
 namespace alttrashcat_tests_csharp.tests
 {
