@@ -3,7 +3,7 @@ using alttrashcat_tests_csharp.tests;
 using System;
 using System.IO;
 using System.Threading;
-using AltTester.AltDriver;
+using Altom.AltDriver;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
