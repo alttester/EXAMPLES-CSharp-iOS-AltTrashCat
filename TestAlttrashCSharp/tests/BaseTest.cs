@@ -33,7 +33,6 @@ namespace alttrashcat_tests_csharp.tests
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             Thread.Sleep(30000);
             Console.WriteLine("Appium driver started");
-            SetupPortForwarding();
         }
 
         [OneTimeTearDown]
@@ -43,11 +42,5 @@ namespace alttrashcat_tests_csharp.tests
             _driver.Quit();
         }
 
-        void SetupPortForwarding()
-        {
-            AltPortForwarding.KillAllIproxyProcess();
-            AltPortForwarding.ForwardIos();
-            Console.WriteLine("Port forwarded (iOS).");
-        }
     }
 }
