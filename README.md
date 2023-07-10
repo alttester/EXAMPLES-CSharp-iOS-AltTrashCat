@@ -6,11 +6,12 @@ https://assetstore.unity.com/packages/essentials/tutorial-projects/endless-runne
 ### Before running the tests on iOS
 - in the `ios_tests.sh` script please change the value for `APPIUM_XCODEORGID` with your Team ID (uniquie 10-character string) in Apple dev account
 - export `IOS_UDID=<your-device-udid>` then run the script `ios_tests.sh`
-
+- considering that `port forwarding` is no longer available on iOS devices, to be able to use port forwarding it is necessary to follow the steps from https://alttester.com/docs/desktop/v.2.0.1/pages/known-issues.html#problem-with-reverse-port-forwarding-for-ios
 ### Running the tests on iOS
-The tests are meant to be run on an iOS device.
-The app is provided at https://altom.com/app/uploads/AltTester/TrashCat/TrashCat.ipa.zip and needs to be included unzipped under project.
-`./ios_tests.sh`
+1. Install the [AltTesterDesktop](https://alttester.com/alttester/#pricing), then open it (you need to accept the Terms and Conditions if the AltTester is opened for the first time).
+2. The tests are meant to be run on an iOS device.
+The app is provided at https://alttester.com/app/uploads/AltTester/TrashCat/TrashCatiOS2_0_1.ipa.zip and needs to be included unzipped under project.
+3. `./ios_tests.sh` in your terminal.
 
 This script will:
 
@@ -19,4 +20,4 @@ This script will:
 - stop the app after the test are done
 
 Info about the required setup and how to run these tests can be found here:
-https://altom.com/alttester/docs/sdk/pages/alttester-with-appium.html#
+https://alttester.com/docs/sdk/latest/pages/alttester-with-appium.html
