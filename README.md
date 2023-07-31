@@ -6,7 +6,8 @@ https://assetstore.unity.com/packages/essentials/tutorial-projects/endless-runne
 ### Before running the tests on iOS
 - in the `ios_tests.sh` script please change the value for `APPIUM_XCODEORGID` with your Team ID (uniquie 10-character string) in Apple dev account
 - export `IOS_UDID=<your-device-udid>` then run the script `ios_tests.sh`
-- considering that `port forwarding` is no longer available on iOS devices, to be able to use port forwarding it is necessary to follow the steps from https://alttester.com/docs/desktop/v.2.0.1/pages/known-issues.html#problem-with-reverse-port-forwarding-for-ios
+- considering that the IProxy does not have a way of setting up `reverse port forwarding`, to be able to connect it is necessary to follow the steps from https://alttester.com/docs/sdk/latest/pages/advanced-usage.html#in-case-of-ios 
+
 ### Running the tests on iOS
 1. Install the [AltTesterDesktop](https://alttester.com/alttester/#pricing), then open it (you need to accept the Terms and Conditions if the AltTester is opened for the first time).
 2. The tests are meant to be run on an iOS device.
