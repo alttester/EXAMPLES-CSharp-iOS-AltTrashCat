@@ -9,6 +9,7 @@ https://assetstore.unity.com/packages/essentials/tutorial-projects/endless-runne
 - considering that the IProxy does not have a way of setting up `reverse port forwarding`, to be able to connect it is necessary to follow the steps from https://alttester.com/docs/sdk/latest/pages/advanced-usage.html#in-case-of-ios 
 
 ### Running the tests on iOS
+❗ Starting with version 2.0.0, the AltTester Desktop must be running on your PC while the tests are running.
 1. Install the [AltTesterDesktop](https://alttester.com/alttester/#pricing), then open it (you need to accept the Terms and Conditions if the AltTester is opened for the first time).
 2. The tests are meant to be run on an iOS device.
 The app is provided at https://alttester.com/app/uploads/AltTester/TrashCat/TrashCatiOS2_0_1.ipa.zip and needs to be included unzipped under project.
