@@ -21,16 +21,17 @@ namespace alttrashcat_tests_csharp.tests
         public void Setup()
         {
             var  driverOptions = new AppiumOptions();
-            driverOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, Environment.GetEnvironmentVariable("APPIUM_PLATFORM"));
-            driverOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, Environment.GetEnvironmentVariable("APPIUM_DEVICE"));
-            driverOptions.AddAdditionalCapability(MobileCapabilityType.App, Environment.GetEnvironmentVariable("APPIUM_APPFILE"));
-            driverOptions.AddAdditionalCapability(MobileCapabilityType.AutomationName, Environment.GetEnvironmentVariable("APPIUM_AUTOMATION"));
+            driverOptions.AddAdditionalCapability("appium:platformName", Environment.GetEnvironmentVariable("APPIUM_PLATFORM"));
+            driverOptions.AddAdditionalCapability("appium:deviceName", Environment.GetEnvironmentVariable("APPIUM_DEVICE"));
+            driverOptions.AddAdditionalCapability("appium:udid", Environment.GetEnvironmentVariable("UDID"));
+            driverOptions.AddAdditionalCapability("appium:automationName", Environment.GetEnvironmentVariable("APPIUM_AUTOMATION"));
+            driverOptions.AddAdditionalCapability("appium:app", Environment.GetEnvironmentVariable("APPIUM_APPFILE"));
             driverOptions.AddAdditionalCapability("xcodeOrgId", Environment.GetEnvironmentVariable("APPIUM_XCODEORGID"));
             driverOptions.AddAdditionalCapability("xcodeSigningId", Environment.GetEnvironmentVariable("APPIUM_XCODESIGNID"));
 
             Uri url = new Uri(Environment.GetEnvironmentVariable("APPIUM_URL"));
             _driver = new IOSDriver<IOSElement>(url, driverOptions);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
             Thread.Sleep(30000);
             Console.WriteLine("Appium driver started");
         }
