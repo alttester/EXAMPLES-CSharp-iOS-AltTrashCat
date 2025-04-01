@@ -1,4 +1,4 @@
-using AltTester.AltTesterUnitySDK.Driver;
+using AltTester.AltTesterSDK.Driver;
 namespace alttrashcat_tests_csharp.pages
 {
     public class BasePage
@@ -6,8 +6,9 @@ namespace alttrashcat_tests_csharp.pages
         AltDriver driver;
 
         public AltDriver Driver { get => driver; set => driver = value; }
-        public BasePage(AltDriver driver){
-            Driver=driver;
+        public BasePage(AltDriver driver)
+        {
+            Driver = driver;
         }
     }
 }

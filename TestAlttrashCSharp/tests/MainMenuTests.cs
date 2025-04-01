@@ -1,11 +1,11 @@
-using alttrashcat_tests_csharp.pages;
 using System;
 using System.Threading;
-using AltTester.AltTesterUnitySDK.Driver;
+using AltTester.AltTesterSDK.Driver;
+using alttrashcat_tests_csharp.pages;
 using NUnit.Framework;
 namespace alttrashcat_tests_csharp.tests
 {
-    public class MainMenuTests: BaseTest
+    public class MainMenuTests : BaseTest
     {
         AltDriver altDriver;
         MainMenuPage mainMenuPage;
@@ -17,7 +17,7 @@ namespace alttrashcat_tests_csharp.tests
             mainMenuPage = new MainMenuPage(altDriver);
             mainMenuPage.LoadScene();
         }
-        
+
         [TearDown]
         public void Dispose()
         {
@@ -26,7 +26,8 @@ namespace alttrashcat_tests_csharp.tests
         }
 
         [Test]
-        public void TestMainMenuPageLoadedCorrectly(){
+        public void TestMainMenuPageLoadedCorrectly()
+        {
             Assert.True(mainMenuPage.IsDisplayed());
         }
     }

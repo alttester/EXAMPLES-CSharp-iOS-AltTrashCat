@@ -1,9 +1,9 @@
-using alttrashcat_tests_csharp.pages;
-using alttrashcat_tests_csharp.tests;
 using System;
 using System.IO;
 using System.Threading;
-using AltTester.AltTesterUnitySDK.Driver;
+using AltTester.AltTesterSDK.Driver;
+using alttrashcat_tests_csharp.pages;
+using alttrashcat_tests_csharp.tests;
 using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
@@ -20,7 +20,7 @@ namespace alttrashcat_tests_csharp.tests
         [OneTimeSetUp]
         public void Setup()
         {
-            var  driverOptions = new AppiumOptions();
+            var driverOptions = new AppiumOptions();
             driverOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, Environment.GetEnvironmentVariable("APPIUM_PLATFORM"));
             driverOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, Environment.GetEnvironmentVariable("APPIUM_DEVICE"));
             driverOptions.AddAdditionalCapability(MobileCapabilityType.App, Environment.GetEnvironmentVariable("APPIUM_APPFILE"));
